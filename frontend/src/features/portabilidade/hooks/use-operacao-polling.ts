@@ -1,0 +1,24 @@
+import { useQuery } from '@tanstack/react-query'
+import { ApiError } from '@/features/portabilidade/api/http'
+import { consultarOperacao } from '@/features/portabilidade/api/portabilidade-api'
+import { retryInterval } from '@/shared/utils/retry-interval'
+
+export function useOperacaoPolling(operacaoId: string | null) {
+  return useQuery({
+    queryKey: ['portabilidade', 'operacao', operacaoId],
+    queryFn: () => {
+      if (!operacaoId) {
+        throw new Error('É necessário informar o identificador da operação.')
+      }
+      return consultarOperacao(operacaoId)
+    },
+    enabled: Boolean(operacaoId),
+    retry: (failureCount, error) =>
+      failureCount < 1 && (!(error instanceof ApiError) || error.status >= 500),
+    refetchInterval: (query) => {
+      const operation = query.state.data
+      return retryInterval(operation?.status, operation?.retryAfterSeconds)
+    },
+    refetchIntervalInBackground: false,
+  })
+}
