@@ -1,0 +1,49 @@
+{
+  "properties": [
+    {
+      "name": "central.base-url",
+      "type": "java.net.URI",
+      "description": "URL base da Central de Convênios."
+    },
+    {
+      "name": "central.connect-timeout",
+      "type": "java.time.Duration",
+      "description": "Timeout para estabelecer conexão com a Central."
+    },
+    {
+      "name": "central.read-timeout",
+      "type": "java.time.Duration",
+      "description": "Timeout de leitura das respostas da Central."
+    },
+    {
+      "name": "central.hmac-secret",
+      "type": "java.lang.String",
+      "description": "Segredo externo usado para assinar requisições da Central com HMAC-SHA256."
+    },
+    {
+      "name": "central.retry.max-attempts",
+      "type": "java.lang.Integer",
+      "description": "Número máximo de tentativas para chamadas GET à Central."
+    },
+    {
+      "name": "central.retry.initial-backoff",
+      "type": "java.time.Duration",
+      "description": "Intervalo inicial de backoff para retry de GET à Central."
+    },
+    {
+      "name": "central.retry.max-backoff",
+      "type": "java.time.Duration",
+      "description": "Intervalo máximo de backoff para retry de GET à Central."
+    },
+    {
+      "name": "central.retry.multiplier",
+      "type": "java.lang.Integer",
+      "description": "Multiplicador exponencial do backoff para retry de GET à Central."
+    },
+    {
+      "name": "app.cors.allowed-origins",
+      "type": "java.lang.String",
+      "description": "Origens permitidas para chamadas CORS à API."
+    }
+  ]
+}
