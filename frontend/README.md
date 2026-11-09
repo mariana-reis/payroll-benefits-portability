@@ -202,10 +202,21 @@ pnpm install
 
 # 3. Configurar variáveis de ambiente
 cp .env.example .env
+# No Windows (PowerShell): Copy-Item .env.example .env
 
 # 4. Iniciar servidor de desenvolvimento (Vite)
 pnpm dev
 ```
+
+### Variáveis de Ambiente (`.env`)
+
+A aplicação utiliza as seguintes variáveis de ambiente gerenciadas pelo Vite:
+
+| Variável | Valor Padrão | Descrição |
+|---|---|---|
+| `VITE_API_URL` | `http://localhost:8080` | URL base do serviço backend Spring Boot para chamadas HTTP e polling. |
+
+Caso o arquivo `.env` não seja criado, o cliente HTTP possui um fallback automático para `http://localhost:8080`, mas a criação explícita do arquivo a partir de `.env.example` é recomendada para consistência em todos os ambientes.
 
 A aplicação estará acessível em: `http://localhost:5173`
 

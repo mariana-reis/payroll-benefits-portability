@@ -148,8 +148,18 @@ Em um terceiro terminal:
 ```bash
 cd frontend
 pnpm install
+cp .env.example .env
 pnpm dev
 ```
+*Em ambientes Windows (PowerShell):*
+```powershell
+cd frontend
+pnpm install
+Copy-Item .env.example .env
+pnpm dev
+```
+> **Nota de Configuração (`.env`):** O arquivo `.env` gerado a partir do `.env.example` define a variável `VITE_API_URL=http://localhost:8080`, indicando o endereço da API Backend para as requisições HTTP e WebSockets/Polling da aplicação.
+
 *Acesse a aplicação no navegador em `http://localhost:5173`.*
 
 ---
